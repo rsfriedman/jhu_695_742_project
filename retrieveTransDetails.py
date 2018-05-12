@@ -65,7 +65,7 @@ transaction_count = get_all_transactions(bitcoin_address)
 
 parsed_count = parse_transaction_count(transaction_count)
 
-print("Finished count, writing to file, %d addresses with over 10 transactions found" % len(parsed_count))
+print("Finished count, writing to file, %d addresses with over 2 transactions found" % len(parsed_count))
 
 file = open("tx_count.txt", "w")
 file.write(json.dumps(parsed_count))
