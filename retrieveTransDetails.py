@@ -4,7 +4,7 @@ import json
 
 block_explorer_url  = "https://blockexplorer.com/api/addr/"
 
-parser = argparse.ArgumentParser(description='Collect and graph Bitcoin transactions and any related addresses.')
+parser = argparse.ArgumentParser(description='Collect info about bitcoin transactions.')
 
 parser.add_argument("--address", help="A bitcoin address to begin the search on.",)
 
