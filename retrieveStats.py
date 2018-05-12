@@ -3,7 +3,7 @@ import requests
 
 blockchain_url  = "https://blockchain.info/"
 
-parser = argparse.ArgumentParser(description='Collect and visualize Bitcoin transactions and any related hidden services.')
+parser = argparse.ArgumentParser(description='Collect stats on Bitcoin transactions and any related hidden services.')
 
 parser.add_argument("--address", help="A bitcoin address to begin the search on.",)
 
