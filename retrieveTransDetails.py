@@ -4,7 +4,7 @@ import json
 
 block_explorer_url  = "https://blockexplorer.com/api/addr/"
 
-parser = argparse.ArgumentParser(description='Collect and visualize Bitcoin transactions and any related hidden services.')
+parser = argparse.ArgumentParser(description='Collect and graph Bitcoin transactions and any related addresses.')
 
 parser.add_argument("--address", help="A bitcoin address to begin the search on.",)
 
@@ -20,7 +20,7 @@ def get_all_transactions(bitcoin_address):
     results  = response.json()
 
     if results['txApperances'] == 0:
-        print("[*] No transactions for %s" % bitcoin_address)
+        print("**** No transactions found for %s" % bitcoin_address)
         return transactions
 
 
@@ -59,7 +59,7 @@ def parse_transaction_count(transaction_count):
             parsed_tx_count[key] = value
     return parsed_tx_count
 
-print("[*] Retrieving all transactions from the blockchain for %s" % bitcoin_address)
+print("*** Retrieving all transactions for %s" % bitcoin_address)
 
 transaction_count = get_all_transactions(bitcoin_address)
 
