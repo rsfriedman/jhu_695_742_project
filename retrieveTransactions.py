@@ -2,15 +2,11 @@ import argparse
 import requests
 import networkx
 
-
-blacklist = ["4a6kzlzytb4ksafk.onion","blockchainbdgpzk.onion"]
-
 block_explorer_url  = "https://blockexplorer.com/api/addr/"
-#?from=0&to=50
 
-parser = argparse.ArgumentParser(description='Collect and visualize Bitcoin transactions and any related hidden services.')
+parser = argparse.ArgumentParser(description='Collect and graph Bitcoin transactions and any related addresses.')
 
-parser.add_argument("--graph",help="Output filename of the graph file. Example: bitcoin.gexf",default="bitcoingraph.gexf")
+parser.add_argument("--graph",help="Output file of the graph file)
 parser.add_argument("--address", help="A bitcoin address to begin the search on.",)
 
 
@@ -38,13 +34,13 @@ def get_all_transactions(bitcoin_address):
         print("[!] Error retrieving bitcoin transactions. Please re-run this script.")
         return transactions
 
-    if results['txApperances'] == 0:
-        print("[*] No transactions for %s" % bitcoin_address)
+    if results['txAppearances'] == 0:
+        print("*** No transactions for %s" % bitcoin_address)
         return transactions
 
     transactions.extend(results['transactions'])
 
-    while len(transactions) < results['txApperances']:
+    while len(transactions) < results['txAppearances']:
 
         from_number += 50
         to_number   += 50
@@ -57,7 +53,7 @@ def get_all_transactions(bitcoin_address):
 
         transactions.extend(results['transactions'])
 
-    print("[*] Retrieved %d bitcoin transactions." % len(transactions))
+    print("**** Retrieved %d bitcoin transactions." % len(transactions))
 
     return transactions
 
